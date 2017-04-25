@@ -47,7 +47,7 @@
 }
 </style>
 <h1>api documentation for
-    <a>jstransformer (v1.0.0)</a>
+    <a href="https://github.com/jstransformers/jstransformer#readme">jstransformer (v1.0.0)</a>
 </h1>
 <h4>Normalize the API of any jstransformer</h4>
 <div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
@@ -68,6 +68,15 @@
             <a class="apidocElementLiA" href="#apidoc.element.jstransformer.Transformer">
             function <span class="apidocSignatureSpan">jstransformer.</span>Transformer
             <span class="apidocSignatureSpan">(tr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index">
+            function <span class="apidocSignatureSpan">jstransformer.</span>index
+            <span class="apidocSignatureSpan">(transformer)</span>
             </a>
 
         </li>
@@ -277,6 +286,82 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.jstransformer.index">module jstransformer.index</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.index">
+            function <span class="apidocSignatureSpan">jstransformer.</span>index
+            <span class="apidocSignatureSpan">(transformer)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.Transformer">
+            function <span class="apidocSignatureSpan">jstransformer.index.</span>Transformer
+            <span class="apidocSignatureSpan">(tr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.normalize">
+            function <span class="apidocSignatureSpan">jstransformer.index.</span>normalize
+            <span class="apidocSignatureSpan">(result)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.normalizeAsync">
+            function <span class="apidocSignatureSpan">jstransformer.index.</span>normalizeAsync
+            <span class="apidocSignatureSpan">(result, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.normalizeFn">
+            function <span class="apidocSignatureSpan">jstransformer.index.</span>normalizeFn
+            <span class="apidocSignatureSpan">(result)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.normalizeFnAsync">
+            function <span class="apidocSignatureSpan">jstransformer.index.</span>normalizeFnAsync
+            <span class="apidocSignatureSpan">(result, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.readFile">
+            function <span class="apidocSignatureSpan">jstransformer.index.</span>readFile
+            <span class="apidocSignatureSpan">(a0, a1, a2)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstransformer.index.readFileSync">
+            function <span class="apidocSignatureSpan">jstransformer.index.</span>readFileSync
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -329,6 +414,21 @@
   this.name = this._tr.name;
   this.outputFormat = this._tr.outputFormat;
   this.inputFormats = this._tr.inputFormats || [this.name];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index" id="apidoc.element.jstransformer.index">
+        function <span class="apidocSignatureSpan">jstransformer.</span>index
+        <span class="apidocSignatureSpan">(transformer)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">index = function (transformer) {
+  return new Transformer(transformer);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -771,22 +871,21 @@ if (!this._hasMethod('compile')) {
   return tr.normalizeFn(this._tr.compile(str, options));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    throw new Error('The Transform "' + this.name + '" does not support synchronous compilation');
-  } else if (this.can('compileFileAsync')) {
-    throw new Error('The Transform "' + this.name + '" does not support compiling plain strings');
-  } else {
-    throw new Error('The Transform "' + this.name + '" does not support compilation');
-  }
-}
-return tr.normalizeFn(this._tr.<span class="apidocCodeKeywordSpan">compile</span>(str, options));
-};
-Transformer.prototype.compileAsync = function (str, options, cb) {
-if (!this.can('compileAsync')) { // compileFile* || renderFile* || renderAsync || compile*Client*
-  return Promise.reject(new Error('The Transform "' + this.name + '" does not support compiling plain strings
-')).nodeify(cb);
-}
-if (this._hasMethod('compileAsync')) {
-  return tr.normalizeFnAsync(this._tr.compileAsync(str, options), cb);
+## [0.0.4] - 2015-11-23
+### Changed
+- Switched to [Keep a Changelog](http://keepachangelog.com/) spec for CHANGELOG.md
+- Creates an `options.filename` for `*File()` functions, if one is not provided
+
+## [0.0.3] - 2015-07-13
+### Added
+- Added `.render()` fallbacks for `.<span class="apidocCodeKeywordSpan">compile</span>()`
+
+### Changed
+- Prefers locals over options when passing a single argument to `.render()`
+- Updated dependencies
+
+## [0.0.2] - 2015-04-11
+### Added
 ...</pre></li>
     </ul>
 
@@ -1137,20 +1236,21 @@ if (this._hasMethod('compileFileClientAsync')) {
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-## Usage
+## [0.0.4] - 2015-11-23
+### Changed
+- Switched to [Keep a Changelog](http://keepachangelog.com/) spec for CHANGELOG.md
+- Creates an `options.filename` for `*File()` functions, if one is not provided
 
-```js
-var transformer = require('jstransformer');
-var marked = transformer(require('jstransformer-marked'));
+## [0.0.3] - 2015-07-13
+### Added
+- Added `.<span class="apidocCodeKeywordSpan">render</span>()` fallbacks for `.compile()`
 
-var options = {};
-var res = marked.<span class="apidocCodeKeywordSpan">render</span>('Some **markdown**', options);
-// =&gt; {body: 'Some &lt;strong&gt;markdown&lt;/strong&gt;', dependencies: []}
-```
+### Changed
+- Prefers locals over options when passing a single argument to `.render()`
+- Updated dependencies
 
-This gives the same API regardless of the jstransformer passed in.
-
-## API
+## [0.0.2] - 2015-04-11
+### Added
 ...</pre></li>
     </ul>
 
@@ -1187,20 +1287,23 @@ This gives the same API regardless of the jstransformer passed in.
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-_requires the underlying transform to implement `.render` or `.compile`_
-
-Transform a string and return an object.
-
-### `.renderAsync`
-
-```js
-transformer.<span class="apidocCodeKeywordSpan">renderAsync</span>(str[, options], locals, callback);
-```
-
-```js
-transformer.renderAsync(str[, options], locals);
-=&gt; Promise({body: String, dependencies: Array.&lt;String&gt;})
-```
+  if (this.can('renderFileAsync')) {
+    return Promise.reject(new Error('The Transform "' + this.name + '" does not support rendering from
+a string.')).nodeify(cb);
+  } else {
+    return Promise.reject(new Error('The Transform "' + this.name + '" does not support rendering')).
+nodeify(cb);
+  }
+}
+if (this._hasMethod('renderAsync')) {
+  return tr.normalizeAsync(this._tr.<span class="apidocCodeKeywordSpan">renderAsync</span>(str, options, locals), cb);
+} else if (this._hasMethod('render')) {
+  return tr.normalizeAsync(this._tr.render(str, options, locals), cb);
+} else {
+  return tr.normalizeAsync(this.compileAsync(str, options).then(function (compiled) {
+    return {body: compiled.fn(locals || options), dependencies: compiled.dependencies};
+  }), cb);
+}
 ...</pre></li>
     </ul>
 
@@ -1230,21 +1333,21 @@ transformer.renderAsync(str[, options], locals);
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-_requires the underlying transform to implement `.renderAsync` or `.render`_
-
-Transform a string asynchronously. If a callback is provided, it is called as `callback(err, data)`, otherwise a Promise is returned
-.
-
-### `.renderFile`
-
-```js
-transformer.<span class="apidocCodeKeywordSpan">renderFile</span>(filename, options, locals)
-=&gt; {body: String, dependencies: Array.&lt;String&gt;}
-```
-
-_requires the underlying transform to implement `.renderFile`, `.render`, `.compileFile`, or `.compile`_
-
-Transform a file and return an object.
+  if (!this.can('compileFile')) { // compile*Client* || compile*Async || render*Async
+    throw new Error('The Transform "' + this.name + '" does not support synchronous compilation');
+  }
+  if (this._hasMethod('compileFile')) {
+    return tr.normalizeFn(this._tr.compileFile(filename, options));
+  } else if (this._hasMethod('renderFile')) {
+    return tr.normalizeFn(function (locals) {
+      return tr.normalize(this._tr.<span class="apidocCodeKeywordSpan">renderFile</span>(filename, options, locals)).body;
+    }.bind(this));
+  } else { // render || compile
+    if (!options) options = {};
+    if (options.filename === undefined) options.filename = filename;
+    return this.compile(tr.readFileSync(filename, 'utf8'), options);
+  }
+};
 ...</pre></li>
     </ul>
 
@@ -1284,20 +1387,372 @@ Transform a file and return an object.
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-_requires the underlying transform to implement `.renderFile`, `.render`, `.compileFile`, or `.compile`_
+}
 
-Transform a file and return an object.
+if (typeof locals === 'function') {
+  cb = locals;
+  locals = options;
+}
+if (this._hasMethod('renderFileAsync')) {
+  return tr.normalizeAsync(this._tr.<span class="apidocCodeKeywordSpan">renderFileAsync</span>(filename, options, locals), cb);
+} else if (this._hasMethod('renderFile')) {
+  return tr.normalizeAsync(this._tr.renderFile(filename, options, locals), cb);
+} else if (this._hasMethod('compile') || this._hasMethod('compileAsync')
+           || this._hasMethod('compileFile') || this._hasMethod('compileFileAsync')) {
+  return tr.normalizeAsync(this.compileFileAsync(filename, options).then(function (compiled) {
+    return {body: compiled.fn(locals || options), dependencies: compiled.dependencies};
+  }), cb);
+...</pre></li>
+    </ul>
 
-### `.renderFileAsync`
 
-```js
-transformer.<span class="apidocCodeKeywordSpan">renderFileAsync</span>(filename[, options], locals, callback);
-```
+</div>
 
-```js
-transformer.renderFileAsync(filename[, options], locals);
-=&gt; Promise({body: String, dependencies: Array.&lt;String&gt;})
-```
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jstransformer.index" id="apidoc.module.jstransformer.index">module jstransformer.index</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.index" id="apidoc.element.jstransformer.index.index">
+        function <span class="apidocSignatureSpan">jstransformer.</span>index
+        <span class="apidocSignatureSpan">(transformer)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">index = function (transformer) {
+  return new Transformer(transformer);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.Transformer" id="apidoc.element.jstransformer.index.Transformer">
+        function <span class="apidocSignatureSpan">jstransformer.index.</span>Transformer
+        <span class="apidocSignatureSpan">(tr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Transformer(tr) {
+  assert(tr, 'Transformer must be an object');
+  assert(typeof tr.name === 'string', 'Transformer must have a name');
+  assert(typeof tr.outputFormat === 'string', 'Transformer must have an output format');
+  assert([
+    'compile',
+    'compileAsync',
+    'compileFile',
+    'compileFileAsync',
+    'compileClient',
+    'compileClientAsync',
+    'compileFileClient',
+    'compileFileClientAsync',
+    'render',
+    'renderAsync',
+    'renderFile',
+    'renderFileAsync'
+  ].some(function (method) {
+    return typeof tr[method] === 'function';
+  }), 'Transformer must implement at least one of the potential methods.');
+  this._tr = tr;
+  this.name = this._tr.name;
+  this.outputFormat = this._tr.outputFormat;
+  this.inputFormats = this._tr.inputFormats || [this.name];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.normalize" id="apidoc.element.jstransformer.index.normalize">
+        function <span class="apidocSignatureSpan">jstransformer.index.</span>normalize
+        <span class="apidocSignatureSpan">(result)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function normalize(result) {
+  if (typeof result === 'string') {
+    return {body: result, dependencies: []};
+  } else if (result &amp;&amp; typeof result === 'object' &amp;&amp; typeof result.body === 'string') {
+    if ('dependencies' in result) {
+      if (!Array.isArray(result.dependencies)) {
+        throw new Error('Result should have a dependencies property that is an array');
+      }
+    } else {
+      result.dependencies = [];
+    }
+    return result;
+  } else {
+    throw new Error('Invalid result object from transform.');
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Transformer.prototype.compile = function (str, options) {
+if (!this._hasMethod('compile')) {
+  if (this.can('render')) {
+    var _this = this;
+    return {
+      fn: function (locals) {
+        return tr.<span class="apidocCodeKeywordSpan">normalize</span>(_this._tr.render(str, options, locals)).body;
+      },
+      dependencies: []
+    };
+  }
+  if (this.can('compileAsync')) {
+    throw new Error('The Transform "' + this.name + '" does not support synchronous compilation');
+  } else if (this.can('compileFileAsync')) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.normalizeAsync" id="apidoc.element.jstransformer.index.normalizeAsync">
+        function <span class="apidocSignatureSpan">jstransformer.index.</span>normalizeAsync
+        <span class="apidocSignatureSpan">(result, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function normalizeAsync(result, cb) {
+  return Promise.resolve(result).then(function (result) {
+    if (result &amp;&amp; isPromise(result.body)) {
+      return result.body.then(function (body) {
+        result.body = body;
+        return result;
+      });
+    }
+    return result;
+  }).then(tr.normalize).nodeify(cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (this.can('compileFileClientAsync')) {
+    return Promise.reject(new Error('The Transform "' + this.name + '" does not support compiling for the
+ client from a string.')).nodeify(cb);
+  } else {
+    return Promise.reject(new Error('The Transform "' + this.name + '" does not support compiling for the
+ client')).nodeify(cb);
+  }
+}
+if (this._hasMethod('compileClientAsync')) {
+  return tr.<span class="apidocCodeKeywordSpan">normalizeAsync</span>(this._tr.compileClientAsync(str, options), cb);
+} else {
+  return tr.normalizeAsync(this._tr.compileClient(str, options), cb);
+}
+};
+Transformer.prototype.compileFileClient = function (filename, options) {
+if (!this.can('compileFileClient')) {
+  if (this.can('compileFileClientAsync')) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.normalizeFn" id="apidoc.element.jstransformer.index.normalizeFn">
+        function <span class="apidocSignatureSpan">jstransformer.index.</span>normalizeFn
+        <span class="apidocSignatureSpan">(result)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function normalizeFn(result) {
+  if (typeof result === 'function') {
+    return {fn: result, dependencies: []};
+  } else if (result &amp;&amp; typeof result === 'object' &amp;&amp; typeof result.fn === 'function') {
+    if ('dependencies' in result) {
+      if (!Array.isArray(result.dependencies)) {
+        throw new Error('Result should have a dependencies property that is an array');
+      }
+    } else {
+      result.dependencies = [];
+    }
+    return result;
+  } else {
+    throw new Error('Invalid result object from transform.');
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    throw new Error('The Transform "' + this.name + '" does not support synchronous compilation');
+  } else if (this.can('compileFileAsync')) {
+    throw new Error('The Transform "' + this.name + '" does not support compiling plain strings');
+  } else {
+    throw new Error('The Transform "' + this.name + '" does not support compilation');
+  }
+}
+return tr.<span class="apidocCodeKeywordSpan">normalizeFn</span>(this._tr.compile(str, options));
+};
+Transformer.prototype.compileAsync = function (str, options, cb) {
+if (!this.can('compileAsync')) { // compileFile* || renderFile* || renderAsync || compile*Client*
+  return Promise.reject(new Error('The Transform "' + this.name + '" does not support compiling plain strings
+')).nodeify(cb);
+}
+if (this._hasMethod('compileAsync')) {
+  return tr.normalizeFnAsync(this._tr.compileAsync(str, options), cb);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.normalizeFnAsync" id="apidoc.element.jstransformer.index.normalizeFnAsync">
+        function <span class="apidocSignatureSpan">jstransformer.index.</span>normalizeFnAsync
+        <span class="apidocSignatureSpan">(result, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function normalizeFnAsync(result, cb) {
+  return Promise.resolve(result).then(function (result) {
+    if (result &amp;&amp; isPromise(result.fn)) {
+      return result.fn.then(function (fn) {
+        result.fn = fn;
+        return result;
+      });
+    }
+    return result;
+  }).then(tr.normalizeFn).nodeify(cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+return tr.normalizeFn(this._tr.compile(str, options));
+};
+Transformer.prototype.compileAsync = function (str, options, cb) {
+if (!this.can('compileAsync')) { // compileFile* || renderFile* || renderAsync || compile*Client*
+  return Promise.reject(new Error('The Transform "' + this.name + '" does not support compiling plain strings
+')).nodeify(cb);
+}
+if (this._hasMethod('compileAsync')) {
+  return tr.<span class="apidocCodeKeywordSpan">normalizeFnAsync</span>(this._tr.compileAsync(str, options), cb);
+} else { // render || compile
+  return tr.normalizeFnAsync(this.compile(str, options), cb);
+}
+};
+Transformer.prototype.compileFile = function (filename, options) {
+if (!this.can('compileFile')) { // compile*Client* || compile*Async || render*Async
+  throw new Error('The Transform "' + this.name + '" does not support synchronous compilation');
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.readFile" id="apidoc.element.jstransformer.index.readFile">
+        function <span class="apidocSignatureSpan">jstransformer.index.</span>readFile
+        <span class="apidocSignatureSpan">(a0, a1, a2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readFile = function (a0, a1, a2) {var self = this;var args;var argLength = arguments.length;if (arguments.length &gt; 3) {args = new Array(arguments
+.length + 1);for (var i = 0; i &lt; arguments.length; i++) {args[i] = arguments[i];}}return new Promise(function (rs, rj) {var cb =
+function (err, res) {if (err) { rj(err); } else { rs(res); }};var res;switch (argLength) {case 0:res = fn.call(self,cb);break;case
+ 1:res = fn.call(self,a0,cb);break;case 2:res = fn.call(self,a0,a1,cb);break;case 3:res = fn.call(self,a0,a1,a2,cb);break;default
+:args[argLength] = cb;res = fn.apply(self, args);}if (res &amp;&amp;(typeof res === "object" || typeof res === "function") &amp;&amp;typeof res.
+then === "function") {rs(res);}});}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (this._hasMethod('compileFileAsync')) {
+  return tr.normalizeFnAsync(this._tr.compileFileAsync(filename, options), cb);
+} else if (this._hasMethod('compileFile') || this._hasMethod('renderFile')) {
+  return tr.normalizeFnAsync(this.compileFile(filename, options), cb);
+} else { // compileAsync || compile || render
+  if (!options) options = {};
+  if (options.filename === undefined) options.filename = filename;
+  return tr.normalizeFnAsync(tr.<span class="apidocCodeKeywordSpan">readFile</span>(filename, 'utf8').then(function (str
+) {
+    if (this._hasMethod('compileAsync')) {
+      return this._tr.compileAsync(str, options);
+    } else { // compile || render
+      return this.compile(str, options);
+    }
+  }.bind(this)), cb);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jstransformer.index.readFileSync" id="apidoc.element.jstransformer.index.readFileSync">
+        function <span class="apidocSignatureSpan">jstransformer.index.</span>readFileSync
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readFileSync = function (path, options) {
+  if (!options) {
+    options = { encoding: null, flag: 'r' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, flag: 'r' };
+  } else if (typeof options !== 'object') {
+    throwOptionsError(options);
+  }
+
+  var encoding = options.encoding;
+  assertEncoding(encoding);
+
+  var flag = options.flag || 'r';
+  var isUserFd = isFd(path); // file descriptor ownership
+  var fd = isUserFd ? path : fs.openSync(path, flag, 0o666);
+
+  var st = tryStatSync(fd, isUserFd);
+  var size = st.isFile() ? st.size : 0;
+  var pos = 0;
+  var buffer; // single buffer with file data
+  var buffers; // list for when size is unknown
+
+  if (size === 0) {
+    buffers = [];
+  } else {
+    buffer = tryCreateBuffer(size, fd, isUserFd);
+  }
+
+  var bytesRead;
+
+  if (size !== 0) {
+    do {
+      bytesRead = tryReadSync(fd, isUserFd, buffer, pos, size - pos);
+      pos += bytesRead;
+    } while (bytesRead !== 0 &amp;&amp; pos &lt; size);
+  } else {
+    do {
+      // the kernel lies about many files.
+      // Go ahead and try to read some bytes.
+      buffer = Buffer.allocUnsafe(8192);
+      bytesRead = tryReadSync(fd, isUserFd, buffer, 0, 8192);
+      if (bytesRead !== 0) {
+        buffers.push(buffer.slice(0, bytesRead));
+      }
+      pos += bytesRead;
+    } while (bytesRead !== 0);
+  }
+
+  if (!isUserFd)
+    fs.closeSync(fd);
+
+  if (size === 0) {
+    // data was collected into the buffers list.
+    buffer = Buffer.concat(buffers, pos);
+  } else if (pos &lt; size) {
+    buffer = buffer.slice(0, pos);
+  }
+
+  if (encoding) buffer = buffer.toString(encoding);
+  return buffer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else if (this._hasMethod('renderFile')) {
+  return tr.normalizeFn(function (locals) {
+    return tr.normalize(this._tr.renderFile(filename, options, locals)).body;
+  }.bind(this));
+} else { // render || compile
+  if (!options) options = {};
+  if (options.filename === undefined) options.filename = filename;
+  return this.compile(tr.<span class="apidocCodeKeywordSpan">readFileSync</span>(filename, 'utf8'), options);
+}
+};
+Transformer.prototype.compileFileAsync = function (filename, options, cb) {
+if (!this.can('compileFileAsync')) {
+  return Promise.reject(new Error('The Transform "' + this.name + '" does not support compilation'));
+}
+if (this._hasMethod('compileFileAsync')) {
 ...</pre></li>
     </ul>
 
